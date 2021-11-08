@@ -71,7 +71,7 @@ defaultFuses:
 	$(PROGRAM) -c $(PROGRAMMER) -p $(MMCU) $(VERBOSITY) -U $(HIGH):w:$(HDEFAULT):$(RAW) -U $(LOW):w:$(LDEFAULT):$(RAW) || $(ADDVERBOSITY)
 
 fuses: 
-	$(PROGRAM) -c $(PROGRAMMER) -p $(MMCU) $(VERBOSITY) -U $(HIGH):w:$(H120):$(RAW) -U $(LOW):w:$(L120):$(RAW) || $(ADDVERBOSITY)
+	$(PROGRAM) -c $(PROGRAMMER) -p $(MMCU) $(VERBOSITY) -U $(HIGH):w:$(H120):$(RAW) -U $(LOW):w:$(L120):$(RAW)
 
 # Disable just the JTAG fuse
 disableJTAG: 
@@ -81,7 +81,7 @@ disableJTAG:
 	@rm -f $(HTXT)
 
 program: $(PATHB)main.hex
-	$(PROGRAM) -c $(PROGRAMMER) -p $(MMCU) $(VERBOSITY) -U $(MEMORY):w:$< || $(ADDVERBOSITY)
+	$(PROGRAM) -c $(PROGRAMMER) -p $(MMCU) $(VERBOSITY) -U $(MEMORY):w:$<
 
 debug: $(PATHO)main.elf
 	@sed -i "s/break main.c:.*/break main.c:$(WHILELINENO)/" $(INITDEBUGGER)
